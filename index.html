@@ -1,0 +1,141 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"><title>自动化UI界面</title>
+    <link defer="" href="https://www.layuicdn.com/layui-v2.6.10/css/layui.css" rel="stylesheet">
+    <script defer="" src="https://www.layuicdn.com/layui-v2.6.10/layui.js"></script>
+  </head>
+  <body>
+    <div id="scope-root" style="width:50%; margin-left:25%; margin-right:25%;margin-top: 200px">
+      <div style="display:inline-block;"></div>
+      <div class="layui-tab layui-tab-card">
+        <ul class="layui-tab-title">
+          <li class="layui-this">加载流程</li>
+          <li>跳转页面</li>
+          <li>操作元素</li>
+        </ul>
+        <div class="layui-tab-content">
+          <div class="layui-tab-item layui-show">
+            <form class="layui-form" id="load-process-form" method="post" style="padding:20px">
+              <div id="button-area-1503125416669926675">
+                <button class="layui-btn layui-btn-primary layui-border-blue layui-btn-radius" style="margin-bottom:20px">上传文件</button>
+                <script>
+    document.querySelector("#button-area-1503125416669926675").addEventListener("click",()=>{
+        
+document.querySelector("[name='upload-process']").click()
+
+    })
+</script>
+              </div>
+              <div class="layui-form-item" style="display:none">
+                <div class="layui-input-block" style="margin-left: 20px;">
+                  <input class="layui-input" list="upload-process-list" name="upload-process" placeholder="" type="file">
+                  <datalist id="upload-process-list"></datalist>
+                </div>
+              </div>
+              <div class="layui-form-item" style="margin-bottom:20px">
+                <label class="layui-form-label" style="width:auto">循环次数</label>
+                <div class="layui-input-block" style="margin-left: 150px;">
+                  <input class="layui-input" lay-verify="required" list="process-looptimes-list" name="process-looptimes" placeholder="" required="" type="number" value="1">
+                  <datalist id="process-looptimes-list"></datalist>
+                </div>
+              </div>
+              <div class="ws-form-submit-btns" style="text-align:center">
+                <button class="layui-btn layui-btn" type="submit">提交</button>
+                <button class="layui-btn layui-btn-warm" type="cancel">重置</button>
+              </div>
+            </form>
+          </div>
+          <div class="layui-tab-item">
+            <form class="layui-form" method="post" style="padding:20px">
+              <div class="layui-form-item" style="margin-bottom:20px">
+                <label class="layui-form-label" style="width:auto">跳转至网页:</label>
+                <div class="layui-input-block" style="margin-left: 150px;">
+                  <input class="layui-input" lay-verify="required" list="page-url-list" name="page-url" placeholder="请在此输入想要跳转的网页" required="" type="url">
+                  <datalist id="page-url-list"></datalist>
+                </div>
+              </div>
+              <div class="layui-form-item" style="margin-bottom:20px">
+                <label class="layui-form-label" style="width:auto">程序休眠时间(秒)</label>
+                <div class="layui-input-block" style="margin-left: 150px;">
+                  <input class="layui-input" lay-verify="required" list="page-goto-sleeptime-list" name="page-goto-sleeptime" placeholder="" required="" type="number" value="0">
+                  <datalist id="page-goto-sleeptime-list"></datalist>
+                </div>
+              </div>
+              <div class="ws-form-submit-btns" style="text-align:center;">
+                <button class="layui-btn layui-btn" type="submit">提交</button>
+                <button class="layui-btn layui-btn-warm" type="cancel">重置</button>
+              </div>
+            </form>
+          </div>
+          <div class="layui-tab-item">
+            <form class="layui-form" method="post" style="padding:20px">
+              <div class="layui-form-item" style="margin-bottom:20px">
+                <label class="layui-form-label" style="width: auto;">请选择定位元素的方式:</label>
+                <div class="layui-input-block" style="margin-left: 200px;">
+                  <select lay-verify="" name="locate-element-by">
+                    <option value="id">ID</option>
+                    <option value="css selector">CSS 选择器</option>
+                    <option value="xpath">xpath</option>
+                  </select>
+                </div>
+              </div>
+              <div class="layui-form-item" style="margin-bottom:20px">
+                <label class="layui-form-label" style="width:auto">请输入定位元素的值:</label>
+                <div class="layui-input-block" style="margin-left: 200px;">
+                  <input class="layui-input" lay-verify="required" list="locate-element-value-list" name="locate-element-value" placeholder="" required="" type="text">
+                  <datalist id="locate-element-value-list"></datalist>
+                </div>
+              </div>
+              <div class="layui-form-item" style="margin-bottom:20px">
+                <label class="layui-form-label" style="width: auto;">请选择对元素的操作:</label>
+                <div class="layui-input-block" style="margin-left: 200px;">
+                  <select lay-verify="" name="operations-to-element">
+                    <option value="click">点击元素</option>
+                    <option value="type">向元素输入值</option>
+                    <option value="clear">清空元素</option>
+                  </select>
+                </div>
+              </div>
+              <div class="layui-form-item" style="margin-bottom:20px">
+                <label class="layui-form-label" style="width:auto">对元素输入的值</label>
+                <div class="layui-input-block" style="margin-left: 200px;">
+                  <input class="layui-input" disabled="disabled" list="text-sent-to-element-list" name="text-sent-to-element" placeholder="" type="text">
+                  <datalist id="text-sent-to-element-list"></datalist>
+                </div>
+              </div>
+              <div class="ws-form-submit-btns" style="text-align:center">
+                <button class="layui-btn layui-btn" type="submit">提交</button>
+                <button class="layui-btn layui-btn-warm" type="cancel">重置</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="scope-foot">
+      <script>
+layui.use('form',function(){
+     var form = layui.form
+    form.render('select')
+})
+</script>
+      <script>
+let text_sent_to_element = document.querySelector("input[name='text-sent-to-element']");
+ele = document.querySelector("[name='operations-to-element']").parentNode.querySelector("input");
+setInterval(()=>{
+    if(ele === null){
+        ele = document.querySelector("[name='operations-to-element']").parentNode.querySelector("input");
+    }
+    if(ele.value === "向元素输入值"){
+            text_sent_to_element.removeAttribute("disabled");
+        }else{
+            text_sent_to_element.value = "";
+            text_sent_to_element.setAttribute("disabled", "");
+        }
+}, 500)
+</script>
+    </div>
+  </body>
+</html>
